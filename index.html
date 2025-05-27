@@ -282,7 +282,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Two-photon microscopy is a powerful tool for in vivo imaging, but its imaging depth is typically limited to a few hundred microns due to tissue scattering, even with existing scattering correction techniques. Moreover, most active scattering correction methods are restricted to small regions by the optical memory effect. Here, we introduce compressive Fourier-domain intensity coupling for scattering correction (C-FOCUS), an active scattering correction approach that integrates Fourier-domain intensity modulation with compressive sensing for two-photon microscopy. C-FOCUS enhances fluorescence intensity by over 20-fold in vivo, accelerates scattering correction by 5-fold compared to previous approaches, and enables multipatch correction across fields of view spanning hundreds of microns beyond the memory effect range. Using C-FOCUS, we demonstrate high-resolution imaging of YFP-labeled neurons and FITC-labeled blood vessels at depths exceeding 900 &mu m in the intact mouse brain in vivo. Furthermore, we achieve transcranial imaging of YFP-labeled dendritic structures through the intact adult mouse skull. C-FOCUS provides a broadly applicable strategy for rapid, deep-tissue optical imaging in the living brain.
+            Two-photon microscopy is a powerful tool for in vivo imaging, but its imaging depth is typically limited to a few hundred microns due to tissue scattering, even with existing scattering correction techniques. Moreover, most active scattering correction methods are restricted to small regions by the optical memory effect. Here, we introduce compressive Fourier-domain intensity coupling for scattering correction (C-FOCUS), an active scattering correction approach that integrates Fourier-domain intensity modulation with compressive sensing for two-photon microscopy. C-FOCUS enhances fluorescence intensity by over 20-fold in vivo, accelerates scattering correction by 5-fold compared to previous approaches, and enables multipatch correction across fields of view spanning hundreds of microns beyond the memory effect range. Using C-FOCUS, we demonstrate high-resolution imaging of YFP-labeled neurons and FITC-labeled blood vessels at depths exceeding 900 μm in the intact mouse brain in vivo. Furthermore, we achieve transcranial imaging of YFP-labeled dendritic structures through the intact adult mouse skull. C-FOCUS provides a broadly applicable strategy for rapid, deep-tissue optical imaging in the living brain.
           </p>
         </div>
       </div>
@@ -342,30 +342,34 @@
     <h2 class="title is-3">Results</h2>
 
     <div class="content has-text-justified">
-      <p>
+<!--       <p>
         We verify the validation of our model as well as each component in the
         model under the simulation 'ucdavis' data. Then, we applied the FDT to experimental
         data of thin (MDCK) and thick (3D muscle tube) sample to show the effectiveness of our model for variety of
         structure and z-section ability. 
-      </p>
+      </p> -->
       <div class="related-work">
-        <h3 class="title is-4">UCDavis</h3>
+        <h3 class="title is-4">Beads</h3>
         <div class="work-item">
           <a href="">
-            <img src="./static/images/fig_ucd3.jpg" alt="Progressive Encoding for Neural Optimization">
+            <img src="./static/images/Figure2.jpg" alt="Progressive Encoding for Neural Optimization">
           </a>
           <p class="caption">
-            <strong>Reconstruction of the 3D RI of a simulated "UCDavis" pattern.</strong>
+            <strong>Quantitative evaluation of C-FOCUS by imaging red fluorescent beads through a 250 μm mouse skull ex vivo.</strong>
           </p>
           <p>
-            <span class="caption">a</span>, Reconstructed 3D RI distribution of the "UCDavis" pattern in 3D from 400 fluorescence images. 
-            <span class="caption">b</span>, A representative ground-truth (GT) image, generated using the multi-slice model with the ground-truth 3D RI, where the RI of the letters is 1.38 and the background is 1.33. 
-            <span class="caption">c</span>, The predicted fluorescence image under the same illumination as <span class="caption">b</span> with the reconstructed 3D RI. 
-            <span class="caption">d</span>, Zoomed-in views of the regions within the orange and green boxes in <span class="caption">b</span> and <span class="caption">c</span>, respectively. The SSIM and PSNR between the ground-truth and predicted images are 0.9994 and 56.9062, respectively. 
-            <span class="caption">e</span>, Results of self-calibration of the positions of fluorescent sources at 50, 100, and 150 iterations. The blue circle indicates the irradiated region from the ground-truth position of the excited fluorophore, and the white dashed line indicates the irradiated region from the predicted position of the fluorophore. 
-            <span class="caption">f</span>, The plot on the right shows the MSE loss between the self-calibrated and ground-truth fluorophore positions, converging to 0.001 within 500 iterations, indicating successful self-calibration of the positions of fluorescent sources. 
-            <span class="caption">g</span>, Comparison of the ground-truth RI (top row) and the predicted RI (bottom row) on each <i>z</i>-plane, as indicated by the axis below. 
-            <span class="caption">h</span>, Effect of the coarse-to-fine structure on reconstruction results on two different <i>z</i>-planes (top row, <i>z</i> = 65 μm; bottom row, <i>z</i> = 53 μm). The first three columns show results of the coarse-to-fine structure at different iterations (100, 200, and 300) with progressively increasing sampling grid at 128 × 128, 256 × 256, and 512 × 512 pixels. The last column shows the results after 300 iterations without the coarse-to-fine structure at a sampling grid of 512 × 512 pixels. Comparing the third column and the fourth column, the coarse-to-fine structure mitigates crosstalk between <i>z</i>-planes and reconstructs the missing low-frequency signals.
+            <span class="caption">a</span>, Correction masks computed using 10–5,000 measurements and the corresponding corrected images. The fully sampled case uses 10,000 measurements.
+            <span class="caption">b</span>, Image of the same fluorescent bead without correction (magnified 38-fold for display).
+            <span class="caption">c</span>, Image of the bead using a low numerical aperture (NA) mask with size comparable to the DC component of the correction mask.
+            <span class="caption">d</span>, Image using a correction mask generated by 2P-FOCUS with 10,000 measurements.
+            <span class="caption">e</span>, Overlap of correction masks from 2P-FOCUS (cyan, 10,000 measurements) and C-FOCUS (green, 3,000 measurements; magenta, 5,000 measurements).
+            <span class="caption">f</span>, Comparison of peak fluorescence intensity without correction (cyan), with low NA (green), with 2P-FOCUS (purple), and with C-FOCUS (magenta) using correction masks from <span class="caption">a</span>.
+            <span class="caption">g</span>, Optimal DMD output-to-input power ratio balancing resolution and correction effectiveness.
+            <span class="caption">h</span>, Fluorescence intensity, 
+            <span class="caption">i</span>, image contrast, 
+            <span class="caption">j</span>, lateral ,and 
+            <span class="caption">k</span>, axial resolution at various power ratios. 
+            <span class="caption">l, m</span>, PSF cross-sections of the bead along the x- and z-axes, respectively.
           </p>
         </div>
         
