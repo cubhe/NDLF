@@ -404,32 +404,32 @@
         <div class="columns is-centered">
 
         <!-- Visual Effects. -->
-        <div class="column">
+<!--         <div class="column">
           <div class="content">
             <h3 class="title is-4">2D view</h3>
-  <!--           <p>
+          <p>
               Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
               would be impossible without nerfies since it would require going through a wall.
-            </p> -->
+            </p> 
             <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/ri_mdck_z~1.mp4"
                       type="video/mp4">
             </video>
           </div>
-        </div>
+        </div> -->
         <!--/ Visual Effects. -->
   
         <!-- Matting. -->
-        <div class="column">
+<!--         <div class="column">
           <div class="content">
           <h3 class="title is-4">3D view</h3>
-          <div class="columns is-centered">
+          <div class="columns is-centered"> -->
   <!--           <div class="column content"> -->
   <!--             <p>
                 As a byproduct of our method, we can also solve the matting problem by ignoring
                 samples that fall outside of a bounding box during rendering.
               </p> -->
-              <video id="dollyzoom" autoplay controls muted loop playsinline height="95%">
+<!--               <video id="dollyzoom" autoplay controls muted loop playsinline height="95%">
                 <source src="./static/videos/ri_mdck_3d720.mp4"
                         type="video/mp4">
               </video>
@@ -437,7 +437,7 @@
   
           </div>
         </div>
-      </div>
+      </div> -->
 
 
 
@@ -446,48 +446,38 @@
         </p>
         <p>
         </p>
+          
         <div class="work-item">
-          <h3 class="title is-4">3D tube</h3>
+          <h3 class="title is-4">Blood Vessels </h3>
           <a href="">
             <img src="./static/images/fig_tube3.jpg" alt="NR-NeRF">
           </a>
           <p class="caption">
-            <strong>3D RI reconstruction of a 3D cultured bovine myotube.</strong>
+            <strong>Adult wild-type mice were imaged through a cranial window under anesthesia following intravenous injection of FITC.</strong>
           </p>
           <p>
-            <span class="caption">a</span>, 3D visualization of the RI of 3D cultured bovine myotube within a volume of 530 × 530 × 300 μm<sup>3</sup>. 
-            <span class="caption">b</span>, Comparison of the measured (top) and predicted (bottom) images. 
-            <span class="caption">c-d</span>, Cross-sectional views of the reconstructed RI on two representative planes, showing high resolution and optical sectioning ability. 
-            <span class="caption">e</span>, Zoomed-in details of the highlighted regions in <span class="caption">d</span>, labeled by corresponding colors, showing different morphologies of the 3D cultured bovine myotube during proliferation and differentiation. The results indicate that FDT can accurately reconstruct various structures across a wide range of spatial frequencies. See the video in the supplementary material for a better 3D visualization.
-          </p>
+            <span class="caption">a</span>, Volume rendering of FITC-labeled blood vessels after scattering correction. The left column shows maximum intensity projection (MIP) images from 0 to 600 $\mu$m depth without correction. The right column shows the volume view of the $252 \times 252 \times 910 \mu m^3$ image stack. 
+            <span class="caption">b-d</span>, Comparison between images without correction (left column), with correction (middle column), and zoomed-in views (right column, scale bar: 20 $\mu$m) at \textbf{b} 700 $\mu$m, \textbf{c} 820 $\mu$m, and \textbf{d} 910 $\mu$m depths. These images were acquired from different mice under the same labeling protocol. In the zoomed-in views, the intensity of the uncorrected images is digitally magnified (scaling factor indicated in each panel) for display purposes. 
+            <span class="caption">e-g</span>, Fluorescence intensity profiles without and with correction along the dashed lines in the zoomed-in views. 
+            <span class="caption">h-j.</span>, Subregions and representative correction masks from the boxed regions in \textbf{b-d} (highlighted by colored frames).
+          /p>
         </div>
 
-        <div class="columns is-centered">
+<!--         <div class="columns is-centered">
         <div class="column">
           <div class="content">
             <h3 class="title is-4">Axial Rotational Perspective</h3>
-  <!--           <p>
-              Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-              would be impossible without nerfies since it would require going through a wall.
-            </p> -->
             <video id="dollyzoom" autoplay controls muted loop playsinline height="100% style="margin-top: 20px;">
               <source src="./static/videos/3dtube0721_11.mp4"
                       type="video/mp4">
             </video>
           </div>
         </div>
-        <!--/ Visual Effects. -->
-  
-        <!-- Matting. -->
+
         <div class="column">
           <div class="content">
           <h3 class="title is-4">Radial Rotational Perspective</h3>
           <div class="columns is-centered">
-  <!--           <div class="column content"> -->
-  <!--             <p>
-                As a byproduct of our method, we can also solve the matting problem by ignoring
-                samples that fall outside of a bounding box during rendering.
-              </p> -->
               <video id="matting-video" autoplay controls muted loop playsinline height="100%">
                 <source src="./static/videos/3dtube0721_2.mp4"
                         type="video/mp4">
@@ -495,19 +485,14 @@
             </div>
           </div>
         </div>
-        </div>
+        </div> -->
         
-        <div class="columns is-centered">
-        <!-- Matting. -->
+<!--         <div class="columns is-centered">
         <div class="column">
           <div class="content">
           <h3 class="title is-4">Radial Rotational Perspective</h3>
           <div class="columns is-centered">
-  <!--           <div class="column content"> -->
-  <!--             <p>
-                As a byproduct of our method, we can also solve the matting problem by ignoring
-                samples that fall outside of a bounding box during rendering.
-              </p> -->
+
               <video id="matting-video" autoplay controls muted loop playsinline height="100%">
                 <source src="./static/videos/ri_3dtube_z~2.mp4"
                         type="video/mp4">
@@ -515,7 +500,7 @@
             </div>
           </div>
         </div>
-        </div>
+        </div> -->
         
       </div>
 
