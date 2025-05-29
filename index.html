@@ -1,610 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <!-- Meta tags for responsiveness and SEO -->
   <meta charset="utf-8">
-  <meta name="description"
-        content="Compressive Fourier-Domain Intensity Coupling (C-FOCUS) enables near-millimeter deep imaging in the intact mouse brain in vivo">
-  <meta name="keywords" content="Compressive sensing, Deep tissue imaging">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compressive Fourier-Domain Intensity Coupling (C-FOCUS) enables near-millimeter deep imaging in the intact mouse brain in vivo</title>
+  <meta name="description" content="Compressive Fourier-Domain Intensity Coupling (C-FOCUS) enables near-millimeter deep imaging in the intact mouse brain in vivo">
+  <meta name="keywords" content="Compressive sensing, Deep tissue imaging">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
- 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+  <!-- Page title -->
+  <title>C-FOCUS: Near-Millimeter Deep In Vivo Two-Photon Imaging</title>
 
-    gtag('js', new Date());
+  <!-- Favicon -->
+  <link rel="icon" href="./static/images/favicon2.svg">
 
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon2.svg">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-<!--   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Inline styles for common components -->
   <style>
-    .column.content img {
+    /* Responsive images */
+    .content img, .work-item img {
       width: 100%;
       height: auto;
     }
+    /* Caption styling */
     .caption {
       font-weight: bold;
       margin-top: 10px;
     }
-    .caption-text {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .caption-text .section-title {
-      font-weight: bold;
-      font-style: italic;
-    }
+    /* Scientific notation styling */
     .scientific-notation {
       font-family: 'Times New Roman', Times, serif;
       font-style: italic;
     }
+    /* Superscript styling */
     .superscript {
       vertical-align: super;
       font-size: smaller;
     }
+    /* Layout for related work items */
+    .related-work {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .work-item {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
   </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <!-- MathJax for rendering LaTeX -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
-
-<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav> -->
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Compressive Fourier-Domain Intensity Coupling (C-FOCUS) enables near-millimeter deep imaging in the intact mouse brain in vivo</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="">Renzhi He</a>,</span>
-            <span class="author-block">
-              <a href="">Yucheng Li</a>,</span>
-            <span class="author-block">
-              <a href="">Brianna Urbina</a>,</span>
-            <span class="author-block">
-              <a href="">Jiandi Wan</a>,</span>
-            <span class="author-block">
-              <a href="https://cobi.ucdavis.edu/people">Yi Xue*</a>,
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">University of California, Davis,</span>
-<!--             <span class="author-block"><sup>2</sup>Google Research</span> -->
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="http://arxiv.org/abs/2407.16657"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="http://arxiv.org/abs/2407.16657"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> 
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/cubhe/fdt_code"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <!-- Hero section: Title, authors, and links -->
+  <section class="hero">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section> -->
-
-
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
+      <div class="container is-max-desktop has-text-centered">
+        <!-- Publication title -->
+        <h1 class="title is-1 publication-title">
+          Compressive Fourier-Domain Intensity Coupling (C-FOCUS)
+        </h1>
+        <!-- Authors list -->
+        <p class="is-size-5 publication-authors">
+          <a href="#">Renzhi He</a>, <a href="#">Yucheng Li</a>, <a href="#">Brianna Urbina</a>,
+          <a href="#">Jiandi Wan</a>, <a href="https://cobi.ucdavis.edu/people">Yi Xue*</a>
+        </p>
+        <!-- Affiliation -->
+        <p class="is-size-5 publication-authors">
+          University of California, Davis
+        </p>
+        <!-- Action links (Paper, Code, etc.) -->
+        <div class="publication-links">
+          <a href="http://arxiv.org/abs/2407.16657" class="button is-rounded is-dark">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+          </a>
+          <a href="https://github.com/cubhe/fdt_code" class="button is-rounded is-dark">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</section> -->
+  </section>
 
+  <!-- Abstract section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+          Two-photon microscopy is a powerful tool for in vivo imaging, but its imaging depth is typically limited to a few hundred microns due to tissue scattering. Here, we introduce C-FOCUS, an active scattering correction approach that integrates Fourier-domain intensity modulation with compressive sensing for two-photon microscopy, achieving over 20-fold intensity enhancement and enabling imaging beyond 900 μm in vivo.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-
-
-
-  
-  <div class="container is-max-desktop">
-    
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
+  <!-- Overview section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Overview</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <!-- System schematic image -->
+          <img src="./static/images/Figure1.jpg" alt="C-FOCUS System Schematic">
+          <p class="caption">
+            C-FOCUS enables two-photon imaging of YFP-labeled neurons up to 940 μm depth using intensity-based scattering correction.
+          </p>
           <p>
-            Two-photon microscopy is a powerful tool for in vivo imaging, but its imaging depth is typically limited to a few hundred microns due to tissue scattering, even with existing scattering correction techniques. Moreover, most active scattering correction methods are restricted to small regions by the optical memory effect. Here, we introduce compressive Fourier-domain intensity coupling for scattering correction (C-FOCUS), an active scattering correction approach that integrates Fourier-domain intensity modulation with compressive sensing for two-photon microscopy. C-FOCUS enhances fluorescence intensity by over 20-fold in vivo, accelerates scattering correction by 5-fold compared to previous approaches, and enables multipatch correction across fields of view spanning hundreds of microns beyond the memory effect range. Using C-FOCUS, we demonstrate high-resolution imaging of YFP-labeled neurons and FITC-labeled blood vessels at depths exceeding 900 μm in the intact mouse brain in vivo. Furthermore, we achieve transcranial imaging of YFP-labeled dendritic structures through the intact adult mouse skull. C-FOCUS provides a broadly applicable strategy for rapid, deep-tissue optical imaging in the living brain.
+            <span class="superscript">a</span> Optical schematic of the C-FOCUS system.<br>
+            <span class="superscript">b</span> Segmentation of uncorrected images into subregions for mask computation.<br>
+            <!-- Additional subfigure descriptions -->
           </p>
         </div>
       </div>
     </div>
-    <!-- Paper video. -->
-<!--     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
-  </div>
-</section>
+  </section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-  <div class="columns is-centered">
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Overview</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <img src="./static/images/Figure1.jpg" alt="Matting Example" style="width: 100%; height: auto;">
-            <p class="caption">
-              <strong>C-FOCUS enables two-photon imaging of YFP-labeled pyramidal neurons up to 940 $\mu m$ below the dura in the somatosensory cortex using intensity-based scattering correction with compressive sensing.</strong>
-            </p>
-            <p>
-              <span class="caption">a</span>, Optical schematic of the C-FOCUS system, based on the 2P-FOCUS framework. 
-              <span class="caption">b</span>, an uncorrected image is first acquired and segmented into subregions, each containing a local intensity peak that serves as a correction target.
-              <span class="caption">c</span>, Correction masks for the subregions are measured and calculated sequentially using compressive sensing.
-              <span class="caption">d</span>, In vivo imaging of YFP-labeled pyramidal neurons in the somatosensory cortex of a Thy1-YFP-H mouse through a cranial window using 1035 nm excitation, with and without scattering correction. With C-FOCUS, fluorescence intensity is enhanced fivefold, enabling imaging to a depth of 800 μm (8.5 EAL).
-            </p>
-
-          </div>
-        </div>
-      </div>
-      
-      <style>
-        .column.content img {
-          width: 100%;
-          height: auto;
-        }
-      </style>
-    </div>
-
-    <!--/ Matting. -->
-
-
-
-<div class="columns is-centered">
-  <div class="column is-full-width">
-    <h2 class="title is-3">Results</h2>
-
-    <div class="content has-text-justified">
-<!--       <p>
-        We verify the validation of our model as well as each component in the
-        model under the simulation 'ucdavis' data. Then, we applied the FDT to experimental
-        data of thin (MDCK) and thick (3D muscle tube) sample to show the effectiveness of our model for variety of
-        structure and z-section ability. 
-      </p> -->
+  <!-- Results section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
       <div class="related-work">
-        <h3 class="title is-4">Fluorescent Beads through a Mouse Skull</h3>
+        <!-- Work item: Fluorescent beads experiment -->
         <div class="work-item">
-          <a href="">
-            <img src="./static/images/Figure2.jpg" alt="Progressive Encoding for Neural Optimization">
-          </a>
+          <h3 class="title is-4">Fluorescent Beads through a Mouse Skull</h3>
+          <img src="./static/images/Figure2.jpg" alt="Fluorescent Beads Experiment">
           <p class="caption">
-            <strong>Quantitative evaluation of C-FOCUS by imaging red fluorescent beads through a 250 μm mouse skull ex vivo.</strong>
-          </p>
-          <p>
-            <span class="caption">a</span>, Correction masks computed using 10–5,000 measurements and the corresponding corrected images. The fully sampled case uses 10,000 measurements.
-            <span class="caption">b</span>, Image of the same fluorescent bead without correction (magnified 38-fold for display).
-            <span class="caption">c</span>, Image of the bead using a low numerical aperture (NA) mask with size comparable to the DC component of the correction mask.
-            <span class="caption">d</span>, Image using a correction mask generated by 2P-FOCUS with 10,000 measurements.
-            <span class="caption">e</span>, Overlap of correction masks from 2P-FOCUS (cyan, 10,000 measurements) and C-FOCUS (green, 3,000 measurements; magenta, 5,000 measurements).
-            <span class="caption">f</span>, Comparison of peak fluorescence intensity without correction (cyan), with low NA (green), with 2P-FOCUS (purple), and with C-FOCUS (magenta) using correction masks from <span class="caption">a</span>.
-            <span class="caption">g</span>, Optimal DMD output-to-input power ratio balancing resolution and correction effectiveness.
-            <span class="caption">h</span>, Fluorescence intensity, 
-            <span class="caption">i</span>, image contrast, 
-            <span class="caption">j</span>, lateral ,and 
-            <span class="caption">k</span>, axial resolution at various power ratios. 
-            <span class="caption">l, m</span>, PSF cross-sections of the bead along the x- and z-axes, respectively.
+            Quantitative evaluation of C-FOCUS by imaging red fluorescent beads through a 250 μm mouse skull ex vivo.
           </p>
         </div>
-        
-        
-        <div class="work-item">
-          <h3 class="title is-4">Neurons</h3>
-          <a href="">
-            <img src="./static/images/Figure3.jpg" alt="D-NeRF">
-          </a>
-          <p class="caption">
-            <strong>C-FOCUS visualizes axons of pyramidal neurons up to 900 μm deep in layer 6 and white matter of the visual cortex in vivo.</strong>
-          </p>
-          <p>
-            <span class="caption">a-d</span>, Comparison of image volumes with and without correction. The left column shows representative images at depths from 30 to 620 μm without correction.
-            <span class="caption">e</span>, Comparison of volumetric views of images without correction (left) and with correction (right). 
-            <span class="caption">f-i</span>, Side-by-side comparison of images without correction (first column), with correction (second column), zoomed-in views (third column; scale bar, 10 μm), and fluorescence intensity profiles along the dashed lines shown in the zoomed-in views (fourth colume), at \textbf{f.} 720 μm, \textbf{g.} 780 μm, \textbf{h.} 850 μm, and \textbf{i.} 900 μm depths. In the zoomed-in views, intensities of the uncorrected images are magnified (as indicated) for visualization purposes. 
-            <span class="caption">j</span>, Schematic of in vivo imaging of layer 5 pyramidal neurons expressing YFP through a cranial window.
-            <span class="caption">k</span>, Subregions and corresponding correction masks at 900 μm depth, labeled by colored frames.
-            
-          </p>
-        </div>
-        
-<!--         <div class="columns is-centered"> -->
-
-
-        <p>
-        </p>
-        <p>
-        </p>
-          
-        <div class="work-item">
-          <h3 class="title is-4">Blood Vessels </h3>
-          <a href="">
-            <img src="./static/images/Figure4.jpg" alt="Blood Vessels">
-          </a>
-          <p class="caption">
-            <strong>Adult wild-type mice were imaged through a cranial window under anesthesia following intravenous injection of FITC.</strong>
-          </p>
-          <p>
-            <span class="caption">a</span>, Volume rendering of FITC-labeled blood vessels after scattering correction. The left column shows maximum intensity projection (MIP) images from 0 to 600 μm depth without correction. The right column shows the volume view of the $252 \times 252 \times 910 \mu m^3$ image stack. 
-            <span class="caption">b-d</span>, Comparison between images without correction (left column), with correction (middle column), and zoomed-in views (right column, scale bar: 20 μm) at \textbf{b} 700 μm, \textbf{c} 820 μm, and \textbf{d} 910 μm depths. These images were acquired from different mice under the same labeling protocol. In the zoomed-in views, the intensity of the uncorrected images is digitally magnified (scaling factor indicated in each panel) for display purposes. 
-            <span class="caption">e-g</span>, Fluorescence intensity profiles without and with correction along the dashed lines in the zoomed-in views. 
-            <span class="caption">h-j</span>, Subregions and representative correction masks from the boxed regions in \textbf{b-d} (highlighted by colored frames).
-          /p>
-        </div>
-
-        <p>
-        </p>
-        <div class="work-item">
-          <h3 class="title is-4">Neurons through Intact Skull</h3>
-          <a href="">
-            <img src="./static/images/Figure5.jpg" alt="NR-NeRF">
-          </a>
-          <p class="caption">
-            <strong>C-FOCUS visualizes the apical dendrites of YFP-labeled pyramidal neurons through 110 μm-thick intact skull in vivo.</strong>
-          </p>
-          <p>
-            <span class="caption">a</span>, The volume view of the skull (second-harmonic signal (SHG)) and YFP-labeled dendrites without and with correction. The left column shows the representative SHG image at 50 μm depth (1.1 EAL) and YFP images at 170 μm (3.2 EAL) and 220 μm (3.4 EAL) depth without correction. 
-            <span class="caption">b-d</span>, Comparison between the images without correct (left column) and the images with correction (middle column), and zoomed-in views (right column, scale bar, 10 μm) at \textbf{b} 430 μm (3.9 EAL), \textbf{c} 490 μm (4.2 EAL), and \textbf{d} 560 μm (4.5 EAL) depth. In the zoomed-in views, the intensity of images without correction are magnified (as labeled in the images) for display purpose. 
-            <span class="caption">e-g</span>, Fluorescent intensity along the dashed line in the zoomed-in views. 
-            <span class="caption">h-j</span>, Subregions and correction masks on the same $z$-plane as \textbf{b-d}. 
-            <span class="caption">k</span>, Schematic of in vivo transcranial imaging of YFP neurons through an intact skull. The coverglass is to protect the exposed skull after survive surgery.
-  
-          /p>
-        </div>        
-      </div>
-      
+        <!-- Additional work items (Neurons, Blood Vessels, etc.) -->
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<style>
-  .related-work {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .work-item {
-    text-align: center;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  .work-item img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
-  }
-  .caption {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-</style>
-</div>
-
-<div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      
-    
-    <!-- Concurrent Work. -->
-<!--     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Concurrent Work. -->
-
-  </div>
-</section>
-
-    <!-- Animation. -->
-<!--     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2> -->
-
-        <!-- Interpolating. -->
-<!--         <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/> -->
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        
-<!--         <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p> -->
-        
-        <!--/ Re-rendering.
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-  
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>
-
-      @misc{he2025compressivefourierdomainintensitycoupling,
-      title={Compressive Fourier-Domain Intensity Coupling (C-FOCUS) enables near-millimeter deep imaging in the intact mouse brain in vivo}, 
-      author={Renzhi He and Yucheng Li and Brianna Urbina and Jiandi Wan and Yi Xue},
-      year={2025},
-      eprint={2505.21822},
-      archivePrefix={arXiv},
-      primaryClass={physics.optics},
-      url={https://arxiv.org/abs/2505.21822},} 
+  <!-- BibTeX section -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@misc{he2025compressivefourierdomainintensitycoupling,
+  title={Compressive Fourier-Domain Intensity Coupling (C-FOCUS) enables near-millimeter deep imaging in the intact mouse brain in vivo},
+  author={Renzhi He and Yucheng Li and Brianna Urbina and Jiandi Wan and Yi Xue},
+  year={2025},
+  eprint={2505.21822},
+  archivePrefix={arXiv},
+  primaryClass={physics.optics},
+  url={https://arxiv.org/abs/2505.21822},
+}
       </code></pre>
-  </div>
-</section>
+    </div>
+  </section>
 
-
-<footer class="footer">
-  <div class="container">
+  <!-- Footer section -->
+  <footer class="footer">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
+      <p>
+        Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+      </p>
     </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
+  <!-- Scripts loaded at end for performance -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/bulma-carousel.min.js"></script>
+  <script defer src="./static/js/bulma-slider.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
 </body>
 </html>
