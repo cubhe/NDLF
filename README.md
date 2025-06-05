@@ -1,6 +1,6 @@
 # Neural Defocus Light Field Rendering
 
-This is the repository that contains source code for the [NDLF](https://cubhe.github.io/NDLF/).
+This is the repository that contains source code for the <a href="https://cubhe.github.io/NDLF/" target="_blank" rel="noopener noreferrer">NDLF</a>.
 
 If you find Nerfies useful for your work please cite:
 
