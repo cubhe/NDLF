@@ -1,9 +1,10 @@
 # Neural Defocus Light Field Rendering
 
 This is the repository that contains source code for the <a href="https://cubhe.github.io/NDLF/" target="_blank" rel="noopener noreferrer">NDLF</a>.
+
 If you find it useful for your work please cite:
 
-···bibtex
+```bibtex
     @ARTICLE{11023177,
       author={He, Renzhi and Hong, Hualin and Cheng, Zhou and Liu, Fei},
       journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
