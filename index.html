@@ -377,36 +377,40 @@
 <!-- Results Section2 -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4">3D/2D Results</h2>
+    <h2 class="title is-4">Focus-Depth Slices and Defocus Map Visualization</h2>
 
     <div class="mb-4">
       <figure class="image">
-        <img src="./static/images/Fig9 2dpsf.jpg" alt="2D-PSFs at different focal depths, showing variation from 800mm to 1200mm focus depth." style="width: 100%; height: auto;">
+        <img src="./static/images/Fig9 2dpsf.jpg" alt="2D Point Spread Functions (2D-PSFs) sampled at varying focus depths from 800mm to 1200mm, showing shape evolution across slices of the 3D-PSF." style="width: 100%; height: auto;">
+        <figcaption class="has-text-centered">Fig. 9. 2D-PSFs across focal depths. These are axial slices of the 3D-PSF at position (320, 200) from the No. 388 dataset, highlighting PSF evolution along depth.</figcaption>
       </figure>
     </div>
 
     <div class="mb-4">
       <figure class="image">
-        <img src="./static/images/Fig10 defocus3.jpg" alt="Focused images with corresponding defocus maps, illustrating focus depth ranges from 800mm to 1200mm." style="width: 100%; height: auto;">
+        <img src="./static/images/Fig10 defocus3.jpg" alt="Grid of focused images and corresponding defocus maps spanning focus depths from 800mm to 1200mm. Defocus levels visualized using PSF size." style="width: 100%; height: auto;">
+        <figcaption class="has-text-centered">Fig. 10. Focused images and defocus maps. Focused images are shown for depth ranges of 800–1000 mm (top row) and 1000–1200 mm (third row). Corresponding defocus maps, computed as the mean of σ<sub>x</sub> and σ<sub>y</sub> from MLP-b, are shown in the second and fourth rows.</figcaption>
       </figure>
     </div>
 
     <div class="content has-text-justified">
-      <p><strong>Figure:</strong> (Top) 2D-PSFs at different focal depths, representing slices of the 3D-PSF shown in Figure 8. The point is located at (320, 200) in the image of the No. 388 dataset. (Bottom) Focused images with corresponding defocus maps. The first row shows focused images for a focus depth range of 800-1000 mm, while the third row displays focused images for 1000-1200 mm. The second and fourth rows are the respective defocus maps, where the defocus map $\sigma(x,y)=(\sigma_{x}(x,y)+\sigma_{y}(x,y))/2,$ and $\sigma_{x}$ and $\sigma_{y}$ are outputs from the MLP-b module.</p>
+      <p><strong>Figure Description:</strong> (Top) The 2D-PSFs at different focus depths (800–1200 mm) are extracted as slices of the 3D-PSF at pixel (320, 200), illustrating how PSF shape evolves with depth. (Bottom) Focused images paired with defocus maps, generated using the MLP-b module. The defocus level is computed as $\sigma(x,y) = \frac{1}{2} \left( \sigma_{x}(x,y) + \sigma_{y}(x,y) \right)$, reflecting the spatially-varying blur across the image plane.</p>
     </div>
   </div>
 </section>
 
-  <!-- Results Section3 -->
+
+<!-- Results Section3 -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4">Focused Image Rendering Results</h2>
+    <h2 class="title is-4">3D and 2D PSF Visualization</h2>
 
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="mb-4">
           <figure class="image">
-            <img src="./static/images/Fig8 3dpsf.jpg" alt="3D Point Spread Function in 3D space, showing a double-cone shape with offset and non-circular slices." style="width: 100%; height: auto;">
+            <img src="./static/images/Fig8 3dpsf.jpg" alt="3D Point Spread Function: double-cone shape PSF in 3D space with depth offset and elliptical cross-sections." style="width: 100%; height: auto;">
+            <figcaption class="has-text-centered">Fig. 8. 3D-PSF in 3D space. The PSF appears as a double-cone along the depth axis, illustrating chromatic and off-axis aberrations.</figcaption>
           </figure>
         </div>
       </div>
@@ -414,17 +418,19 @@
       <div class="column is-half">
         <div class="mb-4">
           <figure class="image">
-            <img src="./static/images/Fig11 kernel_xy.jpg" alt="2D-PSF in X-Y plane, displaying varying shapes of 2D-PSFs at different image positions with normalized kernels and marked centers." style="width: 100%; height: auto;">
+            <img src="./static/images/Fig11 kernel_xy.jpg" alt="2D Point Spread Functions across X-Y plane: showing spatially varying shapes, sizes, and centers of PSFs." style="width: 100%; height: auto;">
+            <figcaption class="has-text-centered">Fig. 11. 2D-PSF in the X-Y plane. PSF shapes vary with spatial location due to vignetting and aberrations. Each kernel is normalized and center-marked.</figcaption>
           </figure>
         </div>
       </div>
     </div>
 
     <div class="content has-text-justified">
-      <p><strong>Figure:</strong> (Left) 3D Point Spread Function in 3D space. The 3D-PSF exhibits some offset along the focus depth axis, and its slices are not perfectly circular. (Right) 2D-PSF in the X-Y plane. This figure shows the 2D-PSF at different positions of the focused image. For enhanced visualization, each kernel in the figure has been normalized, and gray lines are used to mark the center of each kernel.</p>
+      <p><strong>Figure:</strong> (Left) The 3D Point Spread Function (3D-PSF) exhibits a double-cone structure with focus-depth offset and non-circular slices, reflecting physical aberrations. (Right) The 2D-PSFs plotted across the image X-Y plane reveal spatially varying shapes, normalized for visualization. Centers are marked with gray lines to highlight spatial shift.</p>
     </div>
   </div>
 </section>
+
 
     
 <section class="section" id="BibTeX">
